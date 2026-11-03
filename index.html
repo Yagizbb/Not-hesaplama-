@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBÜ Not Hesaplayıcı</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="logo">KBÜ</div>
+            <h1>Not Hesaplayıcı</h1>
+            <p>Vize, final ve bütünleme notunu kolayca hesapla.</p>
+        </header>
+
+        <section class="panel">
+            <h2>Not Bilgileri</h2>
+
+            <form id="grade-form">
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="midterm">Vize / Ara Sınav *</label>
+                        <input type="number" id="midterm"
+                               min="0" max="100" step="any"
+                               placeholder="Örn. 70" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="coursework">Yıl İçi Çalışma Puanı</label>
+                        <input type="number" id="coursework"
+                               min="0" max="100" step="any"
+                               placeholder="İsteğe bağlı">
+                        <small>Boş bırakırsan vize notu kullanılır.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="final-exam">Final Notu *</label>
+                        <input type="number" id="final-exam"
+                               min="0" max="100" step="any"
+                               placeholder="Örn. 60" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="makeup">Bütünleme Notu</label>
+                        <input type="number" id="makeup"
+                               min="0" max="100" step="any"
+                               placeholder="İsteğe bağlı">
+                        <small>Girersen final yerine kullanılır.</small>
+                    </div>
+
+                </div>
+
+                <div class="checkbox-area">
+                    <label>
+                        <input type="checkbox" id="absent">
+                        Devamsızım (F1)
+                    </label>
+                </div>
+
+                <div class="field exam-status">
+                    <label for="attended">
+                        Genel / Bütünleme sınavına girdin mi?
+                    </label>
+
+                    <select id="attended">
+                        <option value="yes">Evet, girdim</option>
+                        <option value="no">Hayır, girmedim (F2)</option>
+                    </select>
+                </div>
+
+                <div id="error-message" class="error-message" hidden></div>
+
+                <div class="buttons">
+                    <button type="submit" class="calculate-button">
+                        Hesapla
+                    </button>
+
+                    <button type="reset" class="reset-button">
+                        Sıfırla
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section id="result-card" class="result-card" hidden>
+
+            <h2>Hesaplama Sonucu</h2>
+
+            <div class="score-area">
+                <span id="success-score">--</span>
+                <span class="score-label">/ 100</span>
+            </div>
+
+            <div class="result-details">
+
+                <div class="detail-box">
+                    <span>Harf Notu</span>
+                    <strong id="letter-grade">--</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>Katsayı</span>
+                    <strong id="grade-coefficient">--</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>Kullanılan Sınav</span>
+                    <strong id="used-exam">--</strong>
+                </div>
+
+            </div>
+
+            <div class="explanation">
+                <strong>Açıklama</strong>
+                <p id="result-explanation"></p>
+            </div>
+
+            <div id="result-status" class="status-badge"></div>
+
+        </section>
+
+        <section class="info-panel">
+            <h2>Hesaplama Kuralları</h2>
+
+            <ul>
+                <li>Yıl içi notunun %40'ı alınır.</li>
+                <li>Final veya bütünleme notunun %60'ı alınır.</li>
+                <li>Sınav notu en az 50 olmalıdır.</li>
+                <li>Başarı notu en az 60 olmalıdır.</li>
+                <li>Devamsızlık: F1.</li>
+                <li>Sınava girmeme: F2.</li>
+                <li>Diğer başarısızlık durumları: F3.</li>
+            </ul>
+        </section>
+
+        <footer>
+            KBÜ Not Hesaplayıcı | HTML, CSS ve JavaScript
+        </footer>
+
+    </div>
+
+</body>
+</html>
